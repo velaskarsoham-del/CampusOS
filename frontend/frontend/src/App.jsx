@@ -113,7 +113,7 @@ function App() {
         return;
       }
 
-      // Save login
+      // Save logged-in user
       localStorage.setItem("user", JSON.stringify(data.user));
 
       setUser(data.user);
@@ -134,7 +134,7 @@ function App() {
   };
 
   // =====================================================
-  // SIGNUP
+  // SIGN UP
   // =====================================================
 
   const handleSignup = async (e) => {
@@ -168,17 +168,14 @@ function App() {
         return;
       }
 
-      // Signup successful
       setMessage(
         "Account created successfully. You can now sign in."
       );
 
       setMessageType("success");
 
-      // Switch to sign in
       setMode("signin");
 
-      // Keep email
       setEmail(email.trim().toLowerCase());
 
       setPassword("");
@@ -220,6 +217,719 @@ function App() {
   };
 
   // =====================================================
+  // STUDENT DASHBOARD
+  // =====================================================
+
+  const StudentDashboard = ({ user, onLogout }) => {
+    const studentName = user?.name || "Student";
+
+    return (
+      <div
+        style={{
+          minHeight: "100vh",
+          background: "#f6f8fc",
+          fontFamily: "Arial, sans-serif",
+          display: "flex",
+        }}
+      >
+        {/* SIDEBAR */}
+
+        <aside
+          style={{
+            width: "285px",
+            background: "#101a2f",
+            color: "white",
+            minHeight: "100vh",
+            padding: "25px 18px",
+            boxSizing: "border-box",
+          }}
+        >
+          {/* BRAND */}
+
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "14px",
+              marginBottom: "45px",
+              paddingLeft: "10px",
+            }}
+          >
+            <div
+              style={{
+                width: "42px",
+                height: "42px",
+                borderRadius: "10px",
+                background: "#2864e8",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: "24px",
+                fontWeight: "800",
+              }}
+            >
+              C
+            </div>
+
+            <span
+              style={{
+                fontSize: "23px",
+                fontWeight: "800",
+              }}
+            >
+              CampusOS
+            </span>
+          </div>
+
+          {/* MENU */}
+
+          <div
+            style={{
+              color: "#8390a8",
+              fontSize: "13px",
+              fontWeight: "700",
+              letterSpacing: "1px",
+              paddingLeft: "12px",
+              marginBottom: "12px",
+            }}
+          >
+            STUDENT PORTAL
+          </div>
+
+          <div
+            style={{
+              background: "#2864e8",
+              borderRadius: "12px",
+              padding: "16px",
+              marginBottom: "8px",
+              fontWeight: "700",
+              cursor: "pointer",
+            }}
+          >
+            🏠 &nbsp; Dashboard
+          </div>
+
+          <div
+            style={{
+              padding: "16px",
+              marginBottom: "8px",
+              color: "#d4dbea",
+            }}
+          >
+            👤 &nbsp; My Profile
+          </div>
+
+          <div
+            style={{
+              padding: "16px",
+              marginBottom: "8px",
+              color: "#d4dbea",
+            }}
+          >
+            📅 &nbsp; Attendance
+          </div>
+
+          <div
+            style={{
+              padding: "16px",
+              marginBottom: "8px",
+              color: "#d4dbea",
+            }}
+          >
+            💰 &nbsp; Fees
+          </div>
+
+          <div
+            style={{
+              padding: "16px",
+              marginBottom: "8px",
+              color: "#d4dbea",
+            }}
+          >
+            📝 &nbsp; Exams
+          </div>
+
+          <div
+            style={{
+              padding: "16px",
+              marginBottom: "8px",
+              color: "#d4dbea",
+            }}
+          >
+            📚 &nbsp; Library
+          </div>
+
+          <div
+            style={{
+              padding: "16px",
+              marginBottom: "8px",
+              color: "#d4dbea",
+            }}
+          >
+            📢 &nbsp; Events
+          </div>
+
+          {/* LOGOUT */}
+
+          <button
+            onClick={onLogout}
+            style={{
+              position: "absolute",
+              bottom: "25px",
+              left: "18px",
+              width: "249px",
+              border: "none",
+              background: "transparent",
+              color: "#ff8d8d",
+              padding: "15px",
+              textAlign: "left",
+              fontSize: "15px",
+              fontWeight: "700",
+              cursor: "pointer",
+            }}
+          >
+            ↪ &nbsp; Logout
+          </button>
+        </aside>
+
+        {/* MAIN CONTENT */}
+
+        <main
+          style={{
+            flex: 1,
+            padding: "40px 45px",
+            overflow: "auto",
+          }}
+        >
+          {/* HEADER */}
+
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              marginBottom: "40px",
+            }}
+          >
+            <div>
+              <p
+                style={{
+                  color: "#60708b",
+                  fontWeight: "700",
+                  letterSpacing: "2px",
+                  fontSize: "13px",
+                  marginBottom: "10px",
+                }}
+              >
+                STUDENT PORTAL
+              </p>
+
+              <h1
+                style={{
+                  margin: 0,
+                  fontSize: "38px",
+                  color: "#10213d",
+                }}
+              >
+                Welcome, {studentName} 👋
+              </h1>
+
+              <p
+                style={{
+                  color: "#71809a",
+                  fontSize: "16px",
+                  marginTop: "10px",
+                }}
+              >
+                Here's what's happening with your campus journey.
+              </p>
+            </div>
+
+            {/* USER */}
+
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: "14px",
+              }}
+            >
+              <div
+                style={{
+                  width: "46px",
+                  height: "46px",
+                  borderRadius: "12px",
+                  background: "#e7efff",
+                  color: "#2864e8",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  fontWeight: "800",
+                  fontSize: "20px",
+                }}
+              >
+                {studentName.charAt(0).toUpperCase()}
+              </div>
+
+              <div>
+                <strong
+                  style={{
+                    color: "#10213d",
+                    display: "block",
+                  }}
+                >
+                  {studentName}
+                </strong>
+
+                <span
+                  style={{
+                    color: "#71809a",
+                    fontSize: "14px",
+                  }}
+                >
+                  Student
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* SUMMARY CARDS */}
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns:
+                "repeat(auto-fit, minmax(220px, 1fr))",
+              gap: "20px",
+              marginBottom: "30px",
+            }}
+          >
+            <div
+              style={{
+                background: "white",
+                border: "1px solid #e2e8f0",
+                borderRadius: "18px",
+                padding: "25px",
+              }}
+            >
+              <div
+                style={{
+                  fontSize: "28px",
+                  marginBottom: "20px",
+                }}
+              >
+                📅
+              </div>
+
+              <p
+                style={{
+                  color: "#71809a",
+                  margin: 0,
+                }}
+              >
+                Attendance
+              </p>
+
+              <h2
+                style={{
+                  margin: "8px 0",
+                  color: "#10213d",
+                }}
+              >
+                —
+              </h2>
+
+              <span
+                style={{
+                  color: "#8996aa",
+                  fontSize: "13px",
+                }}
+              >
+                Attendance module
+              </span>
+            </div>
+
+            <div
+              style={{
+                background: "white",
+                border: "1px solid #e2e8f0",
+                borderRadius: "18px",
+                padding: "25px",
+              }}
+            >
+              <div
+                style={{
+                  fontSize: "28px",
+                  marginBottom: "20px",
+                }}
+              >
+                💰
+              </div>
+
+              <p
+                style={{
+                  color: "#71809a",
+                  margin: 0,
+                }}
+              >
+                Fees
+              </p>
+
+              <h2
+                style={{
+                  margin: "8px 0",
+                  color: "#10213d",
+                }}
+              >
+                —
+              </h2>
+
+              <span
+                style={{
+                  color: "#8996aa",
+                  fontSize: "13px",
+                }}
+              >
+                Fee details
+              </span>
+            </div>
+
+            <div
+              style={{
+                background: "white",
+                border: "1px solid #e2e8f0",
+                borderRadius: "18px",
+                padding: "25px",
+              }}
+            >
+              <div
+                style={{
+                  fontSize: "28px",
+                  marginBottom: "20px",
+                }}
+              >
+                📝
+              </div>
+
+              <p
+                style={{
+                  color: "#71809a",
+                  margin: 0,
+                }}
+              >
+                Exams
+              </p>
+
+              <h2
+                style={{
+                  margin: "8px 0",
+                  color: "#10213d",
+                }}
+              >
+                —
+              </h2>
+
+              <span
+                style={{
+                  color: "#8996aa",
+                  fontSize: "13px",
+                }}
+              >
+                Examination details
+              </span>
+            </div>
+
+            <div
+              style={{
+                background: "white",
+                border: "1px solid #e2e8f0",
+                borderRadius: "18px",
+                padding: "25px",
+              }}
+            >
+              <div
+                style={{
+                  fontSize: "28px",
+                  marginBottom: "20px",
+                }}
+              >
+                🎓
+              </div>
+
+              <p
+                style={{
+                  color: "#71809a",
+                  margin: 0,
+                }}
+              >
+                Campus Credits
+              </p>
+
+              <h2
+                style={{
+                  margin: "8px 0",
+                  color: "#10213d",
+                }}
+              >
+                —
+              </h2>
+
+              <span
+                style={{
+                  color: "#8996aa",
+                  fontSize: "13px",
+                }}
+              >
+                Credits earned
+              </span>
+            </div>
+          </div>
+
+          {/* MAIN PANELS */}
+
+          <div
+            style={{
+              display: "grid",
+              gridTemplateColumns:
+                "minmax(0, 2fr) minmax(280px, 1fr)",
+              gap: "25px",
+            }}
+          >
+            {/* PROFILE */}
+
+            <div
+              style={{
+                background: "white",
+                border: "1px solid #e2e8f0",
+                borderRadius: "18px",
+                padding: "30px",
+              }}
+            >
+              <h2
+                style={{
+                  color: "#10213d",
+                  marginTop: 0,
+                }}
+              >
+                My Profile
+              </h2>
+
+              <p
+                style={{
+                  color: "#71809a",
+                  marginBottom: "25px",
+                }}
+              >
+                Your registered CampusOS account information.
+              </p>
+
+              <div
+                style={{
+                  display: "grid",
+                  gridTemplateColumns:
+                    "repeat(2, minmax(0, 1fr))",
+                  gap: "20px",
+                }}
+              >
+                <div>
+                  <span
+                    style={{
+                      color: "#8996aa",
+                      fontSize: "13px",
+                    }}
+                  >
+                    Name
+                  </span>
+
+                  <strong
+                    style={{
+                      display: "block",
+                      marginTop: "6px",
+                      color: "#10213d",
+                    }}
+                  >
+                    {user.name || "Not available"}
+                  </strong>
+                </div>
+
+                <div>
+                  <span
+                    style={{
+                      color: "#8996aa",
+                      fontSize: "13px",
+                    }}
+                  >
+                    Email
+                  </span>
+
+                  <strong
+                    style={{
+                      display: "block",
+                      marginTop: "6px",
+                      color: "#10213d",
+                    }}
+                  >
+                    {user.email || "Not available"}
+                  </strong>
+                </div>
+
+                <div>
+                  <span
+                    style={{
+                      color: "#8996aa",
+                      fontSize: "13px",
+                    }}
+                  >
+                    Account Type
+                  </span>
+
+                  <strong
+                    style={{
+                      display: "block",
+                      marginTop: "6px",
+                      color: "#10213d",
+                      textTransform: "capitalize",
+                    }}
+                  >
+                    {user.role || "Student"}
+                  </strong>
+                </div>
+
+                <div>
+                  <span
+                    style={{
+                      color: "#8996aa",
+                      fontSize: "13px",
+                    }}
+                  >
+                    Account Status
+                  </span>
+
+                  <strong
+                    style={{
+                      display: "block",
+                      marginTop: "6px",
+                      color: "#10a779",
+                    }}
+                  >
+                    ● Active
+                  </strong>
+                </div>
+              </div>
+            </div>
+
+            {/* QUICK ACTIONS */}
+
+            <div
+              style={{
+                background: "white",
+                border: "1px solid #e2e8f0",
+                borderRadius: "18px",
+                padding: "30px",
+              }}
+            >
+              <h2
+                style={{
+                  color: "#10213d",
+                  marginTop: 0,
+                }}
+              >
+                Quick Access
+              </h2>
+
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "12px",
+                }}
+              >
+                <button
+                  style={{
+                    border: "none",
+                    background: "#f1f5ff",
+                    padding: "15px",
+                    borderRadius: "10px",
+                    textAlign: "left",
+                    cursor: "pointer",
+                  }}
+                >
+                  📅 &nbsp; View Attendance
+                </button>
+
+                <button
+                  style={{
+                    border: "none",
+                    background: "#f1f5ff",
+                    padding: "15px",
+                    borderRadius: "10px",
+                    textAlign: "left",
+                    cursor: "pointer",
+                  }}
+                >
+                  📝 &nbsp; View Exams
+                </button>
+
+                <button
+                  style={{
+                    border: "none",
+                    background: "#f1f5ff",
+                    padding: "15px",
+                    borderRadius: "10px",
+                    textAlign: "left",
+                    cursor: "pointer",
+                  }}
+                >
+                  📚 &nbsp; Open Library
+                </button>
+
+                <button
+                  style={{
+                    border: "none",
+                    background: "#f1f5ff",
+                    padding: "15px",
+                    borderRadius: "10px",
+                    textAlign: "left",
+                    cursor: "pointer",
+                  }}
+                >
+                  📢 &nbsp; Campus Events
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* NOTICE */}
+
+          <div
+            style={{
+              marginTop: "25px",
+              background: "#fff8ed",
+              border: "1px solid #f6dfb9",
+              borderRadius: "16px",
+              padding: "20px 25px",
+              color: "#805b25",
+            }}
+          >
+            <strong>CampusOS Student Portal</strong>
+
+            <p
+              style={{
+                marginBottom: 0,
+                marginTop: "7px",
+              }}
+            >
+              Your account is connected successfully. Student
+              modules such as attendance, exams, fees and library
+              will appear here as they are connected to the system.
+            </p>
+          </div>
+        </main>
+      </div>
+    );
+  };
+
+  // =====================================================
   // LOGGED-IN DASHBOARDS
   // =====================================================
 
@@ -248,33 +958,14 @@ function App() {
     }
 
     // STUDENT
-    return (
-      <div className="student-placeholder">
-        <div className="student-placeholder-card">
-
-          <div className="student-placeholder-icon">
-            C
-          </div>
-
-          <h2>
-            Welcome, {user.name || "Student"}
-          </h2>
-
-          <p>
-            Your student account is connected successfully.
-            The student dashboard will be connected next.
-          </p>
-
-          <button
-            className="placeholder-logout-button"
-            onClick={handleLogout}
-          >
-            Logout
-          </button>
-
-        </div>
-      </div>
-    );
+    if (user.role === "student") {
+      return (
+        <StudentDashboard
+          user={user}
+          onLogout={handleLogout}
+        />
+      );
+    }
   }
 
   // =====================================================
@@ -284,13 +975,9 @@ function App() {
   return (
     <div className="auth-page">
 
-      {/* =================================================
-          LEFT HERO
-      ================================================= */}
+      {/* LEFT HERO */}
 
       <div className="login-hero">
-
-        {/* Decorative circles */}
 
         <div className="hero-background-circle hero-circle-one" />
         <div className="hero-background-circle hero-circle-two" />
@@ -425,9 +1112,7 @@ function App() {
         </div>
       </div>
 
-      {/* =================================================
-          RIGHT SIDE
-      ================================================= */}
+      {/* RIGHT SIDE */}
 
       <div className="login-section">
 
@@ -483,9 +1168,7 @@ function App() {
 
           <div className="auth-form-area">
 
-            {/* =================================================
-                SIGN IN
-            ================================================= */}
+            {/* SIGN IN */}
 
             {mode === "signin" && (
               <>
@@ -650,9 +1333,7 @@ function App() {
               </>
             )}
 
-            {/* =================================================
-                SIGN UP
-            ================================================= */}
+            {/* SIGN UP */}
 
             {mode === "signup" && (
               <>
@@ -853,9 +1534,7 @@ function App() {
 
           </div>
 
-          {/* =================================================
-              MESSAGE
-          ================================================= */}
+          {/* MESSAGE */}
 
           {message && (
             <div
@@ -869,9 +1548,7 @@ function App() {
             </div>
           )}
 
-          {/* =================================================
-              SECURITY NOTE
-          ================================================= */}
+          {/* SECURITY NOTE */}
 
           <div className="security-note">
 

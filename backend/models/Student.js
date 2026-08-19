@@ -2,6 +2,11 @@ const mongoose = require("mongoose");
 
 const studentSchema = new mongoose.Schema(
   {
+    userId:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"User",
+        default:null
+    },
     student_id: { type: String, required: true, unique: true, trim: true },
     first_name: { type: String, required: true, trim: true },
     last_name: { type: String, required: true, trim: true },

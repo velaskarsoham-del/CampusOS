@@ -5,6 +5,7 @@ require("dotenv").config();
 const connectMongoDB = require("./config/mongodb");
 
 const studentRoutes = require("./routes/studentRoutes");
+const studentProfileRoutes = require("./routes/studentProfileRoutes");
 const teacherRoutes = require("./routes/teacherRoutes");
 const attendanceRoutes = require("./routes/attendanceRoutes");
 const userRoutes = require("./routes/userRoutes");
@@ -16,6 +17,7 @@ const PORT = process.env.PORT || 5000;
 app.use(cors({ origin: true, credentials: true }));
 app.use(express.json());
 
+app.use("/api/student/profile", studentProfileRoutes);
 app.use("/", userRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/students", studentRoutes);
